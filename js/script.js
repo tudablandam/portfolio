@@ -15,6 +15,11 @@ form.addEventListener("submit", event => {
         return;
     }
 
+    if (!email.includes("@") || !email.includes(".")) {
+        alert ("Please enter a valid email address.");
+        return;
+    }
+
     console.log(`Message from ${name} (${email}): ${message}`);
     alert("Message sent successfully! I will be back to you soon!");
 
