@@ -1,7 +1,7 @@
 const form = document.querySelector("#contact form");
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
-const messageInput = document.querySelector("#message");
+const messageInput =  document.querySelector("#message");
 
 form.addEventListener("submit", event => {
     event.preventDefault();
@@ -11,13 +11,12 @@ form.addEventListener("submit", event => {
     const message = messageInput.value.trim();
 
     if (!name || !email || !message) {
-        alert("Please fill in all required fields.");
+        alert("Please fill in all fields.");
         return;
     }
 
     console.log(`Message from ${name} (${email}): ${message}`);
     alert("Message sent successfully!");
-    
-    form.reset();
 
-});
+    form.reset();
+})
