@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kim Carl | Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Kim Carl Andrews</h1>
+            <p class="subtitle">Web Developer Portfolio</p>
+            <nav>
+                <a href="#about">About Me</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact Me</a>
+            </nav>
+        </header>
+
+    <main>
+        <section class="container" id="about">
+            <h3>About Me</h3>
+            <img src="kim.jpg" alt="Kim Carl Andrews" width="200" height="200">
+            <p>Hi! I'm Kim. A web developer with a passion for creating beautiful and functional websites.</p>
+        </section>
+
+        <section class="container" id="projects">
+            <h3>Projects</h3>
+            <ul>
+                <li>Portfolio Website</li>                                   
+                <li>Landing Page</li>
+                <li>Calculator App</li>
+            </ul>
+        </section>
+
+        <section class="container" id="contact">
+            <h3>Contact Me</h3>
+            <form action="#" method="post">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
+
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="example@domain.com" autocomplete="email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+
+        <footer>
+            <p>© 2026 Kim Carl Andrews. All Rights Reserved</p>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
