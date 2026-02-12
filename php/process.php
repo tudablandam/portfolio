@@ -5,15 +5,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"] ?? "");
     $message = trim($_POST["message"] ?? "");
 
-    if ($name === "" || $email === "" || $message === "") {
-        echo "Please fill in all fields.";
-        exit;
-    }
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Invalid email address.";
-        exit;
-    }
-
-    echo "Message received successfully!";
+if (in_array('', [$name, $email, $message], true)) {
+    echo "Please fill all fields.";
+    exit;
 }
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "Invalid Email Address.";
+    exit;
+}
+echo "Thank you, $name! Your message has been received.";
+}
+?>
