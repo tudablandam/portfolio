@@ -1,18 +1,35 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+header("Content-Type: application/json");
 
-    $name = trim($_POST["name"] ?? "");
-    $email = trim($_POST["email"] ?? "");
-    $message = trim($_POST["message"] ?? "");
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    echo json_encode([
+        "status" => "error",
+        "message" => "Invalid request"
+    ]);
+    exit;
+}
+
+$name = trim($_POST["name"] ?? "");
+$email = trim($_POST["email"] ?? "");
+$message = trim($_POST["message"] ?? "");
 
 if (in_array('', [$name, $email, $message], true)) {
-    echo "Please fill all fields.";
+    echo json_encode([
+        "status" => "error",
+        "message" => "Please fill in all fields."
+    ]);
     exit;
 }
+
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "Invalid Email Address.";
+    echo json_encode([
+        "status" => "error",
+        "message" => "Invalid email address."
+    ]);
     exit;
 }
-echo "Thank you, $name! Your message has been received.";
-}
-?>
+
+echo json_encode([
+    "status" => "success",
+    "message" => "Message sent successfully!"
+]);
