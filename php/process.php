@@ -1,18 +1,36 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+$conn = new mysqli("localhost", "root", "", "portfolio_db");
+
+if ($conn->connect_error) {
+    die("Database connection failed.");
+}
+
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    die("Invalid request.");
+}
 
     $name = trim($_POST["name"] ?? "");
     $email = trim($_POST["email"] ?? "");
     $message = trim($_POST["message"] ?? "");
 
 if (in_array('', [$name, $email, $message], true)) {
-    echo "Please fill all fields.";
-    exit;
+   die("Please fill in all fields.");
 }
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "Invalid Email Address.";
-    exit;
+    die("Invalid email address.");
 }
-echo "Thank you, $name! Your message has been received.";
+
+$stmt = $conn->prepare("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $name, $email, $message);
+
+if ($stmt->execute()) {
+    echo "<h2> Message saved successfully!</h2>";
+    echo "<a href='/portfolio3/index.html'>Go back</a>";
+} else {
+    echo "Failed to save message.";
 }
+
+$stmt->close();
+$conn->close();
+
 ?>
