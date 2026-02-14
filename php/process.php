@@ -1,9 +1,6 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "portfolio_db");
 
-if ($conn->connect_error) {
-    die("Database connection failed.");
-}
+include_once "db.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     die("Invalid request.");
@@ -25,7 +22,7 @@ $stmt->bind_param("sss", $name, $email, $message);
 
 if ($stmt->execute()) {
     echo "<h2> Message saved successfully!</h2>";
-    echo "<a href='/portfolio3/index.html'>Go back</a>";
+    echo "<a href='/portfolio3/index.php'>Go back</a>";
 } else {
     echo "Failed to save message.";
 }
