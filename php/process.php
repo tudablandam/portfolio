@@ -22,7 +22,7 @@ $stmt->bind_param("sss", $name, $email, $message);
 
 if ($stmt->execute()) {
     echo "<h2> Message saved successfully!</h2>";
-    echo "<a href='/portfolio3/index.php'>Go back</a>";
+    echo "<a href='/portfolio/index.php'>Go back</a>";
 } else {
     echo "Failed to save message.";
 }
